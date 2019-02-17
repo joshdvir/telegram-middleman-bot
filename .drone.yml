@@ -9,7 +9,8 @@ pipeline:
     commands:
       - apk add git bash curl
       - go get ./...
-      - curl -sL https://git.io/goreleaser | bash --snapshot
+      - curl -sL https://git.io/goreleaser
+      - goreleaser --snapshot
     when:
       event: [ push, tag ]
 
