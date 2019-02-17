@@ -1,0 +1,29 @@
+workspace:
+  base: /go
+  path: src/bitbucket.org/joshdvir/telegram-middleman-bot
+pipeline:
+  clone:
+    image: plugins/git
+    tags: true
+
+  release:
+    image: golang:alpine
+    secrets: [ github_token ]
+    commands:
+      - apk add git
+      - go get ./...
+      - curl -sL https://git.io/goreleaser | bash
+    when:
+      event: [ push, tag ]
+
+  docker:
+    image: plugins/docker:latest
+    repo: joshdvir/telegram-middleman-bot
+    tag:
+      - "${DRONE_BUILD_NUMBER}"
+      - "latest"
+    force_tag: true
+    file: Dockerfile
+    secrets: [ docker_username, docker_password ]
+    when:
+      event: [ push, tag ]
