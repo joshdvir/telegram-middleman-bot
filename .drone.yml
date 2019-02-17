@@ -1,10 +1,6 @@
 workspace:
   base: /go
   path: src/bitbucket.org/joshdvir/telegram-middleman-bot
-pipeline:
-  clone:
-    image: plugins/git
-    tags: true
 
   release:
     image: golang:alpine
@@ -12,7 +8,7 @@ pipeline:
     commands:
       - apk add git bash curl
       - go get ./...
-      - curl -sL https://git.io/goreleaser | bash
+      - curl -sL https://git.io/goreleaser | bash --snapshot
     when:
       event: [ push, tag ]
 
