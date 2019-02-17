@@ -10,7 +10,7 @@ pipeline:
     image: golang:alpine
     secrets: [ github_token ]
     commands:
-      - apk add git
+      - apk add git bash curl
       - go get ./...
       - curl -sL https://git.io/goreleaser | bash
     when:
