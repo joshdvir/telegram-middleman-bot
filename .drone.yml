@@ -1,6 +1,7 @@
 workspace:
   base: /go
   path: src/bitbucket.org/joshdvir/telegram-middleman-bot
+pipeline:
 
   release:
     image: golang:alpine
