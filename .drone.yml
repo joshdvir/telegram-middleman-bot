@@ -10,6 +10,11 @@ pipeline:
       - apk add git bash curl
       - go get ./...
       - curl -sL https://git.io/goreleaser | bash -s -- --snapshot
+      - ls -alh
+      - ls -alh dist/*
+      - mkdir build
+      - cp Dockerfile build/
+      - cp dist/linux_amd64/telegram-middleman-bot build/
     when:
       event: [ push, tag ]
 
@@ -20,6 +25,7 @@ pipeline:
       - "${DRONE_BUILD_NUMBER}"
       - "latest"
     force_tag: true
+    context: build
     file: Dockerfile
     secrets: [ docker_username, docker_password ]
     when:
