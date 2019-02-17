@@ -44,4 +44,4 @@ release:
   github:
     owner: joshdvir
     name: telegram-middleman-bot
-  name_template: "{{.Tag}}"
+  name_template: "{{.ProjectName}}-v{{.Version}}"

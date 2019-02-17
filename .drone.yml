@@ -10,8 +10,6 @@ pipeline:
       - apk add git bash curl
       - go get ./...
       - curl -sL https://git.io/goreleaser | bash -s -- --snapshot
-      - ls -alh
-      - ls -alh dist/*
       - mkdir build
       - cp Dockerfile build/
       - cp dist/linux_amd64/telegram-middleman-bot build/
