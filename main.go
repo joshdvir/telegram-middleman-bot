@@ -39,10 +39,10 @@ func sendMessage(recipientId, text string) error {
 	}
 	reader := strings.NewReader(string(m))
 	resp, err := http.Post(getApiUrl()+"/sendMessage", "application/json", reader)
-	defer resp.Body.Close()
 	if err != nil {
 		return err
 	}
+	defer resp.Body.Close()
 	return nil
 }
 
