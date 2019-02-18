@@ -1,6 +1,6 @@
 workspace:
   base: /go
-  path: src/bitbucket.org/joshdvir/telegram-middleman-bot
+  path: src/github.com/joshdvir/telegram-middleman-bot
 pipeline:
 
   release:
